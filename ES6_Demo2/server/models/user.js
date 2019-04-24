@@ -8,7 +8,10 @@ export default (sequelize, DataTypes) => {
     password: DataTypes.TEXT
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Task,{
+      foreignkey:'userId',
+      as:'user_tasks'
+    })
   };
   User.prototype.createToken=function(){
     return jwt.sign({id:this.id},JWT_SECRET)
