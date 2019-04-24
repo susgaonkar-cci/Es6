@@ -1,4 +1,6 @@
-const user = require('../models').User;
+import{User as user} from '../models'
+
+
 import bcrypt from 'bcryptjs'
 
 export function Login(req,res,next){
