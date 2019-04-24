@@ -6,7 +6,7 @@ up: (queryInterface, Sequelize) => {
 
       Example:
       return queryInterface.bulkInsert('users', [{
-        username: 'sanat',
+        username: 'sanaat',
         password:'12333',
         createdAt:new Date(),
         updatedAt:new Date()
