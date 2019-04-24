@@ -1,5 +1,5 @@
 import{User as user} from '../models'
-
+import {Task as task} from '../models'
 
 import bcrypt from 'bcryptjs'
 
@@ -27,8 +27,18 @@ export function create(req,res){
 
 export function display(req,res){
    
-          user.findOne({ where:{id:req.user.id},attributes:['username']})
-          .then(userdata=>{ res.send(userdata)})
+          // user.findOne({ where:{id:req.user.id},attributes:['username']})
+          // .then(userdata=>{ res.send(userdata)})
+          user.findAll({
+               include:[{
+                    model:task,
+                    as:'user_tasks',
+                    attributes:['taskName'],
+                
+               }],
+               attributes:['id','username']
+          })
+          .then(users=>{res.send(users)})
 
 
 }
